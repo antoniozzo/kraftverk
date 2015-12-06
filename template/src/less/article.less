@@ -1,0 +1,14 @@
+.article {
+	display: inline-block;
+	width: 33%;
+
+	vertical-align: top;
+
+	& + .article {
+		margin-left: -4px;
+	}
+}
+
+.article-title {
+	.header(30px);
+}

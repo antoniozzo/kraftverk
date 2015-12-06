@@ -1,0 +1,39 @@
+.icon {
+	display: inline-block;
+	// width: 1em;
+	// height: 1em;
+
+	a& {
+		text-decoration: none;
+		color: inherit;
+	}
+
+	&:before {
+		font-family: 'typicons';
+		font-size: 1em;
+		font-smoothing: antialiased;
+		font-style: normal;
+		font-weight: normal;
+		text-align: center;
+		text-decoration: inherit;
+		text-rendering: optimizeLegibility;
+	}
+
+	// icons
+
+	&.icon--phone:before {
+		content: '\e05b';
+	}
+
+	&.icon--tablet:before {
+		content: '\e05c';
+	}
+
+	&.icon--laptop:before {
+		content: '\e05a';
+	}
+
+	&.icon--popup:before {
+		content: '\e10e';
+	}
+}

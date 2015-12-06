@@ -1,0 +1,18 @@
+{{#each modifiers}}
+	<div class="section section--sub">
+		<div class="section-aside">
+			<h4 class="section-title section-title--sub">
+				<span>{{name}}</span>
+				{{{description}}}
+			</h4>
+
+			<div class="section-description">
+				{{> partial.icons url=(exampleUrl ../reference className)}}
+			</div>
+		</div>
+
+		<div class="section-content">
+			<iframe src="{{exampleUrl ../reference className}}" scrolling="no"></iframe>
+		</div>
+	</div>
+{{/each}}

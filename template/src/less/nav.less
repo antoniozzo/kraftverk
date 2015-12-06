@@ -1,0 +1,31 @@
+.nav {
+	position: fixed;
+	top: 80px;
+	bottom: 0;
+	left: 0;
+	width: 300px;
+	padding: 60px;
+
+	background-color: #fff;
+
+	z-index: 99;
+	display: none;
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	> ul > li > a {
+		.header(16px);
+	}
+
+	> ul > * + * {
+		margin-top: 30px;
+	}
+}

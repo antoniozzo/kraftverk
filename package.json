@@ -1,0 +1,25 @@
+{
+  "name": "kraftverk",
+  "version": "0.0.1",
+  "description": "Styleguide generation with KSS",
+  "author": {
+    "name": "Antonio Rizzo",
+    "email": "antonio.rizzo@oakwood.se"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antoniozzo/kraftverk.git"
+  },
+  "keywords": [
+    "kss",
+    "documentation",
+    "styleguide",
+    "generator"
+  ],
+  "dependencies": {
+    "fs-readdir-recursive": "^1.0.0",
+    "handlebars": "^4.0.5",
+    "kss": "^2.1.1"
+  }
+}

@@ -1,0 +1,31 @@
+<section id="{{referenceURI}}" class="section section--hero">
+	{{#if children}}
+		<div class="section-aside">
+			<h4 class="section-title">
+				<span class="section-number">{{numeric}}</span>
+				{{header}}
+			</h4>
+
+			{{#each children}}
+				<h3 class="section-title section-title--sub">
+					<a href="{{url reference}}">
+						<span>{{numeric}}</span>
+						{{header}}
+					</a>
+				</h3>
+			{{/each}}
+		</div>
+	{{/if}}
+
+	<div class="section-content">
+		<h1 class="section-title section-title--hero">
+			{{header}}
+		</h1>
+
+		{{#if description}}
+			<div class="section-description">
+				{{{description}}}
+			</div>
+		{{/if}}
+	</div>
+</section>

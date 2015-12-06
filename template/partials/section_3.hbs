@@ -1,0 +1,43 @@
+<section id="{{referenceURI}}" class="section section--3">
+	<div class="section-aside">
+		<h3 class="section-title">
+			<span class="section-number">{{numeric}}</span>
+			{{header}}
+		</h3>
+
+		{{#if parameters}}
+			<ul class="parameters">
+				{{#each parameters}}
+					{{> partial.parameter}}
+				{{/each}}
+			</ul>
+		{{/if}}
+
+		{{#if description}}
+			<div class="section-description">
+				{{{description}}}
+			</div>
+		{{/if}}
+	</div>
+
+	<div class="section-content">
+		{{#ifTemplate "example"}}
+		{{/ifTemplate}}
+	</div>
+</section>
+
+{{#ifTemplate "example"}}
+	{{> partial.modifiers}}
+
+	{{#if markup}}
+		{{> partial.section_markup}}
+	{{/if}}
+{{/ifTemplate}}
+
+{{#ifTemplate "example"}}
+	{{> partial.modifiers}}
+
+	{{#if markup}}
+		{{> partial.section_markup}}
+	{{/if}}
+{{/ifTemplate}}
