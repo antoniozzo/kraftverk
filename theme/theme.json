@@ -1,5 +1,7 @@
 {
+	"depth"    : 2,
 	"assets"   : "assets",
 	"partials" : "partials",
-	"helpers"  : "helpers.js"
+	"helpers"  : "helpers.js",
+	"custom"   : ["Template", "Transparent"]
 }

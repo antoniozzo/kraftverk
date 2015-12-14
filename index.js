@@ -1,14 +1,15 @@
 var Kraftverk = function(options) {
 	this.setOptions(options);
 
+	this.themeOptions = this.getThemeOptions();
+	this.docs         = this.getDocs();
+	this.assets       = this.getThemeAssets();
+
 	this.registerPartials(this.getThemePartials());
 	this.registerHelpers(this.getThemeHelpers());
 
-	this.theme        = this.handlebars.compile(this.getThemeFile('index'));
-	this.example      = this.handlebars.compile(this.getThemeFile('example'));
-	this.docs         = this.getDocs();
-	this.assets       = this.getThemeAssets();
-	this.themeOptions = this.getThemeOptions();
+	this.theme   = this.handlebars.compile(this.getThemeFile('index'));
+	this.example = this.handlebars.compile(this.getThemeFile('example'));
 };
 
 Kraftverk.prototype = {
@@ -54,18 +55,18 @@ Kraftverk.prototype = {
 	 * Setters
 	 */
 
-	setOptions : function(opts) {
-		var options;
+	setOptions : function(opts, nested) {
+		var options = nested ? [] : this.options;
 
-		if (typeof opts === 'Object') {
+		if (typeof opts === 'object') {
 			for (var i in opts) {
-				options[i] = this.setOptions(opts[i]);
+				options[i] = this.setOptions(opts[i], true);
 			}
 		} else {
 			return opts;
 		}
 
-		return this.options = options;
+		return nested ? options : this.options = options;
 	},
 
 	setStyleguide : function(styleguide) {
@@ -175,7 +176,7 @@ Kraftverk.prototype = {
 		};
 
 		if (partial.markup.match(/^[^\n]+\.hbs$/)) {
-			var file = this.options.templatesPath + '/' + partial.markup;
+			var file = this.options.templates + '/' + partial.markup;
 
 			if (this.fs.existsSync(file)) {
 				partial.markup = this.fs.readFileSync(file, 'utf8');
@@ -301,7 +302,8 @@ Kraftverk.prototype = {
 	generate : function(source) {
 		this.source = source;
 
-		var options = this.options;
+		var options      = this.options;
+		var themeOptions = this.themeOptions;
 
 		return new Promise(function(resolve, reject) {
 			this.kss.parse(this.source, options, function(err, styleguide) {
@@ -314,7 +316,7 @@ Kraftverk.prototype = {
 
 				this.examples = this.generateExamples(sections);
 				this.pages    = this.generatePages(sections.filter(function(section) {
-					return section.depth() <= options.themeOptions.depth;
+					return section.depth() <= themeOptions.depth;
 				}));
 
 				var file;
