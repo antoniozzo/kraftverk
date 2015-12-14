@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -12,18 +11,27 @@
 	{{#each (option "styles")}}
 		<link rel="stylesheet" type="text/css" href="{{this}}">
 	{{/each}}
-
-	<style>
-		html, body {
-			height: auto;
-			padding: 0;
-			margin: 0;
-			background: none;
-		}
-	</style>
 </head>
 <body>
-	{{{this}}}
+	<script type="text/javascript">
+		if (window.location.hash === '#iframe') {
+			var css   = 'html, body { height: auto; padding: 0; margin: 0; {{background}} }';
+			var head  = document.head || document.getElementsByTagName('head')[0];
+			var style = document.createElement('style');
+
+			style.type = 'text/css';
+
+			if (style.styleSheet) {
+				style.styleSheet.cssText = css;
+			} else {
+				style.appendChild(document.createTextNode(css));
+			}
+
+			head.appendChild(style);
+		}
+	</script>
+
+	{{{content}}}
 
 	{{#each (option "scripts")}}
 		<script type="text/javascript" src="{{this}}"></script>

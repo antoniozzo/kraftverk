@@ -43,11 +43,18 @@
 	// Parent modifiers
 
 	.section--hero & {
+		width: 100%;
+		padding-left: 400px;
+
 		text-align: center;
 	}
 
 	.section--sub & {
 		padding-top: 0;
+	}
+
+	.section--markup & {
+		padding: 50px;
 	}
 }
 
@@ -64,6 +71,16 @@
 	}
 
 	// Parent modifiers
+
+	.section--hero & {
+		display: block;
+		position: fixed;
+		top: 80px;
+		bottom: 0;
+
+		overflow-y: auto;
+		z-index: 99;
+	}
 
 	.section--intro & {
 		background-color: #282828;
@@ -213,7 +230,7 @@
 			display: block;
 
 			&:first-child {
-				width: 80px;
+				width: 100%;
 				height: 80px;
 			}
 

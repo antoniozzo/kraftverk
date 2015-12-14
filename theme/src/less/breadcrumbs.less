@@ -1,0 +1,28 @@
+.breadcrumbs {
+	display: inline-block;
+
+	vertical-align: middle;
+
+	a {
+		color: #999;
+	}
+
+	> * + * {
+		position: relative;
+		margin-left: 15px;
+		padding-left: 15px;
+
+		&:after {
+			position: absolute;
+			top: -5px;
+			left: 0;
+			height: 32px;
+			width: 1px;
+
+			background-color: #555;
+
+			transform: rotate(15deg);
+			content: '';
+		}
+	}
+}

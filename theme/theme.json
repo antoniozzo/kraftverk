@@ -1,0 +1,5 @@
+{
+	"assets"   : "assets",
+	"partials" : "partials",
+	"helpers"  : "helpers.js"
+}

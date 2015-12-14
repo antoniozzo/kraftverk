@@ -104,7 +104,14 @@ iframe {
   transition: width 1s ease;
 }
 pre {
-  white-space: pre-line;
+  padding: 50px;
+  border-radius: 4px;
+  background-color: #222;
+  color: #ddd;
+  -moz-tab-size: 0;
+    -o-tab-size: 0;
+       tab-size: 0;
+  white-space: pre;
 }
 code {
   font-family: 'Cutive Mono', Monaco, Consolas, monospace;
@@ -243,10 +250,7 @@ a.icon {
   display: inline-block;
   vertical-align: middle;
 }
-.breadcrumbs > *:nth-child(1) {
-  color: #999;
-}
-.breadcrumbs > *:nth-child(2) {
+.breadcrumbs a {
   color: #999;
 }
 .breadcrumbs > * + * {
@@ -343,10 +347,15 @@ a.icon {
   padding: 100px;
 }
 .section--hero .section-content {
+  width: 100%;
+  padding-left: 400px;
   text-align: center;
 }
 .section--sub .section-content {
   padding-top: 0;
+}
+.section--markup .section-content {
+  padding: 50px;
 }
 .section-aside {
   position: relative;
@@ -357,6 +366,14 @@ a.icon {
 .section-aside ul {
   list-style: none;
   padding: 0;
+}
+.section--hero .section-aside {
+  display: block;
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 99;
 }
 .section--intro .section-aside {
   background-color: #282828;
@@ -465,7 +482,7 @@ a.icon {
   display: block;
 }
 .section-colors > * > *:first-child {
-  width: 80px;
+  width: 100%;
   height: 80px;
 }
 .section-colors > * > * + * {

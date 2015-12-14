@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -14,7 +13,7 @@
 <body>
 	<header class="header">
 		<div class="header-content">
-			<a href="./" class="brand">
+			<a href="/" class="brand">
 				<img src="/assets/logo.svg">
 			</a>
 
@@ -22,35 +21,44 @@
 				<nav class="breadcrumbs">
 					<a href="{{url topReference}}">{{topReference}}</a>
 					<a href="{{url reference}}">{{header}}</a>
-					<span class="js-breadcrumb">Placeholder</span>
+					<span class="js-breadcrumb"></span>
 				</nav>
 			{{/ifDepth}}
+
+			{{#if doc}}
+				{{#unless children}}
+					<nav class="breadcrumbs">
+						<a href="/">{{option "docsTitle"}}</a>
+						<span>{{name}}</span>
+					</nav>
+				{{/unless}}
+			{{/if}}
 
 			{{> partial.menu}}
 		</div>
 	</header>
 
-	<aside class="aside">
-		{{> partial.nav}}
-	</aside>
-
-	{{#ifDepth 1}}
-		{{> partial.section_hero}}
+	{{#if doc}}
+		{{> partial.doc}}
 	{{else}}
-		{{> partial.section_intro}}
-
-		{{#each children}}
-			{{> partial.section}}
-
-			{{#if children}}
-				{{#each children}}
-					{{> partial.section modifier="sub"}}
-				{{/each}}
-			{{/if}}
+		{{#ifDepth 1}}
+			{{> partial.section_hero}}
 		{{else}}
-			{{> partial.section}}
-		{{/each}}
-	{{/ifDepth}}
+			{{> partial.section_intro}}
+
+			{{#each children}}
+				{{> partial.section}}
+
+				{{#if children}}
+					{{#each children}}
+						{{> partial.section modifier="sub"}}
+					{{/each}}
+				{{/if}}
+			{{else}}
+				{{> partial.section}}
+			{{/each}}
+		{{/ifDepth}}
+	{{/if}}
 
 	<script type="text/javascript" src="/assets/js/prettify.js"></script>
 	<script type="text/javascript" src="/assets/js/iframeResizer.min.js"></script>

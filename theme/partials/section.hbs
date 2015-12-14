@@ -1,4 +1,4 @@
-<section id="{{referenceURI}}" class="section{{#if modifier}} section--{{modifier}}{{/if}}">
+<section id="{{referenceURI}}" data-section="{{header}}" class="section{{#if modifier}} section--{{modifier}}{{/if}}">
 	<div class="section-aside">
 		<h3 class="section-title{{#if modifier}} section-title--{{modifier}}{{/if}}">
 			<span>{{numeric}}</span>
@@ -25,7 +25,7 @@
 	<div class="section-content">
 		{{#ifTemplate "example"}}
 			{{#if markup}}
-				<iframe src="{{exampleUrl reference 'index'}}" scrolling="no"></iframe>
+				<iframe src="{{exampleUrl reference 'index'}}#iframe" scrolling="no"></iframe>
 			{{/if}}
 		{{/ifTemplate}}
 
