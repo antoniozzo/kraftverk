@@ -58,8 +58,10 @@ module.exports = function(kraftverk) {
 			return name ? 'partial.template.' + name : 'partial.template.examples';
 		},
 
-		markup : function(partial) {
-			return kraftverk.partials[partial] ? kraftverk.partials[partial].markup : '';
+		markup : function(reference, modifier) {
+			var example = kraftverk.getPath(reference + '/index');
+
+			return kraftverk.examples[example] ? kraftverk.examples[example].content : '';
 		},
 
 		url : function(reference) {

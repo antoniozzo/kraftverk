@@ -191,8 +191,6 @@ Kraftverk.prototype = {
 			}
 		}
 
-		partial.markup = this.beautify(partial.markup, {preserve_newlines : false});
-
 		return partial;
 	},
 
@@ -278,7 +276,7 @@ Kraftverk.prototype = {
 
 				examples[name] = {
 					background : section.data.transparent === 'false' ? '' : 'background: none;',
-					content    : this.handlebars.compile(partial)(data)
+					content    : this.compile(partial, data)
 				};
 			}
 
@@ -290,7 +288,7 @@ Kraftverk.prototype = {
 
 					examples[name] = {
 						background : section.data.transparent === 'false' ? '' : 'background: none;',
-						content    : this.handlebars.compile(partial)(data)
+						content    : this.compile(partial, data)
 					};
 				}
 			}
@@ -340,6 +338,12 @@ Kraftverk.prototype = {
 				resolve(files);
 			}.bind(this));
 		}.bind(this));
+	},
+
+	compile : function(partial, data) {
+		return this.beautify(this.handlebars.compile(partial)(data), {
+			max_preserve_newlines : 0
+		});
 	}
 
 };

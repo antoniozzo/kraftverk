@@ -100,8 +100,8 @@ h6 a {
 iframe {
   width: 100%;
   border: none;
-  -webkit-transition: width 1s ease;
-  transition: width 1s ease;
+  -webkit-transition: width .5s ease;
+  transition: width .5s ease;
 }
 pre {
   padding: 50px;
