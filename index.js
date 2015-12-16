@@ -250,7 +250,6 @@ Kraftverk.prototype = {
 		if (!sections.length) return {};
 
 		var pages = {};
-		var page, partial;
 
 		for (var i = 0, l = sections.length; i < l; i++) {
 			var file = this.getPath(sections[i].reference());
@@ -304,7 +303,7 @@ Kraftverk.prototype = {
 		var themeOptions = this.themeOptions;
 
 		return new Promise(function(resolve, reject) {
-			this.kss.parse(this.source, options, function(err, styleguide) {
+			this.kss.parse(this.source, themeOptions, function(err, styleguide) {
 				var files    = {};
 				var sections = this.setStyleguide(styleguide).getStyleguideSections('*');
 

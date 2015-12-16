@@ -483,6 +483,7 @@ a.icon {
 }
 .section-colors > * > *:first-child {
   width: 100%;
+  min-width: 80px;
   height: 80px;
 }
 .section-colors > * > * + * {
