@@ -69,4 +69,51 @@ Option | Type | Default Value | Description
 
 ## Default Theme
 
-Docs coming...
+### Section templates
+
+The default kraftverk theme supports additional comment properties besides the ones in KSS.
+
+Option | Type | Default Value | Description
+--- | --- | --- | ---
+**Template** | docs/example/colors | *dynamic* | Template used for documenting you KSS comment. Kraftverk theme try to guess your prefered template between *docs* and *example* depending of you having a `Markup:` in your KSS comment or not.
+**Transparent** | true/false | true | Force the iframe (used for displaying examples) background to transparent. Useful for when you want to showcase single components vs. complete page templates. Defaults to true since it's more common to display smaller components by themself.
+
+#### Examples
+
+*All examples are using LESS.*
+
+##### Template
+
+Display your color variables in the style guide:
+
+```less
+// Colors
+//
+// @red  - #ff6666
+// @blue - #6666ff
+//
+// Template: colors
+//
+// Styleguide: variables.colors
+
+@red  : #ff6666
+@blue : #6666ff
+```
+
+##### Transparent
+
+Use your site background in the style guide example (useful for showcasing pages):
+
+```less
+// Home
+//
+// Markup: pages/home.hbs
+//
+// Transparent: false
+//
+// Styleguide: pages.home
+
+.home {
+    // styles
+}
+```
