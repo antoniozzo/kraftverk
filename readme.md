@@ -11,6 +11,10 @@ Kraftverk is a style guide generator. Kraftverk uses KSS for parsing CSS comment
   - [Kraftverk Options](#kraftverk-options)
   - [Theme Options](#theme-options)
 - [Default Theme](#default-theme)
+  - [Custom Properties](#custom-properties)
+    - [Examples](#examples)
+      - [Template](#template)
+      - [Transparent](#transparent)
 
 ## Usage
 
@@ -69,7 +73,7 @@ Option | Type | Default Value | Description
 
 ## Default Theme
 
-### Section templates
+### Custom Properties
 
 The default kraftverk theme supports additional comment properties besides the ones in KSS.
 
