@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Kraftverk by antoniozzo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Kraftverk</h1>
+      <h2 class="project-tagline">Styleguide generator with KSS</h2>
+      <a href="https://github.com/antoniozzo/kraftverk" class="btn">View on GitHub</a>
+      <a href="https://github.com/antoniozzo/kraftverk/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/antoniozzo/kraftverk/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="kraftverk" class="anchor" href="#kraftverk" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kraftverk</h1>
+
+<p>Kraftverk is a style guide generator. Kraftverk uses KSS for parsing CSS comments to later generate a beautiful style guide with alot of useful features.</p>
+
+<h2>
+<a id="table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of contents</h2>
+
+<ul>
+<li>
+<a href="#usage">Usage</a>
+
+<ul>
+<li><a href="#cli">CLI</a></li>
+<li><a href="#with-gulp">With Gulp</a></li>
+</ul>
+</li>
+<li>
+<a href="#options">Options</a>
+
+<ul>
+<li><a href="#kraftverk-options">Kraftverk Options</a></li>
+<li><a href="#theme-options">Theme Options</a></li>
+</ul>
+</li>
+<li>
+<a href="#default-theme">Default Theme</a>
+
+<ul>
+<li>
+<a href="#custom-properties">Custom Properties</a>
+
+<ul>
+<li>
+<a href="#examples">Examples</a>
+
+<ul>
+<li><a href="#template">Template</a></li>
+<li><a href="#transparent">Transparent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>First you should read up on the <a href="http://warpspire.com/kss/">KSS</a> documentation &amp; syntax.</p>
+
+<h3>
+<a id="cli" class="anchor" href="#cli" aria-hidden="true"><span class="octicon octicon-link"></span></a>CLI</h3>
+
+<p>Currently Kraftverk does not work as a CLI.</p>
+
+<h3>
+<a id="with-gulp" class="anchor" href="#with-gulp" aria-hidden="true"><span class="octicon octicon-link"></span></a>With gulp</h3>
+
+<p>Kraftverk has a gulp plugin:</p>
+
+<div class="highlight highlight-source-shell"><pre>npm install gulp-kraftverk --save-dev</pre></div>
+
+<p>In your <code>gulpfile.js</code>:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> gulp      <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> kraftverk <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>gulp-kraftverk<span class="pl-pds">'</span></span>);
+
+<span class="pl-smi">gulp</span>.<span class="pl-en">task</span>(<span class="pl-s"><span class="pl-pds">'</span>kraftverk<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>() {
+    <span class="pl-k">return</span> <span class="pl-smi">gulp</span>.<span class="pl-en">src</span>(<span class="pl-s"><span class="pl-pds">'</span>src/css/**<span class="pl-pds">'</span></span>) <span class="pl-c">// or LESS/SASS/SCSS etc...</span>
+        .<span class="pl-en">pipe</span>(<span class="pl-en">kraftverk</span>(<span class="pl-c">/* options */</span>))
+        .<span class="pl-en">pipe</span>(<span class="pl-smi">gulp</span>.<span class="pl-en">dest</span>(<span class="pl-s"><span class="pl-pds">'</span>styleguide/<span class="pl-pds">'</span></span>));
+});</pre></div>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<h3>
+<a id="kraftverk-options" class="anchor" href="#kraftverk-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kraftverk Options</h3>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>title</strong></td>
+<td><em>string</em></td>
+<td>"Styleguide"</td>
+<td>The main title of your style guide static site.</td>
+</tr>
+<tr>
+<td><strong>theme</strong></td>
+<td><em>string</em></td>
+<td>"/theme"</td>
+<td>Path to the style guide theme.</td>
+</tr>
+<tr>
+<td><strong>styles</strong></td>
+<td><em>array</em></td>
+<td>[]</td>
+<td>Array of stylesheets to be included in your site examples.</td>
+</tr>
+<tr>
+<td><strong>scripts</strong></td>
+<td><em>array</em></td>
+<td>[]</td>
+<td>Array of scripts to be included in your site examples.</td>
+</tr>
+<tr>
+<td><strong>templates</strong></td>
+<td><em>string</em></td>
+<td>"src/templates"</td>
+<td>Path to the handlebars templates for external markup.</td>
+</tr>
+<tr>
+<td><strong>docs</strong></td>
+<td><em>object</em></td>
+<td></td>
+<td>Documentation options</td>
+</tr>
+<tr>
+<td><strong>docs.dir</strong></td>
+<td><em>string</em></td>
+<td>"src/docs"</td>
+<td>Path to markdown doc files.</td>
+</tr>
+<tr>
+<td><strong>docs.title</strong></td>
+<td><em>string</em></td>
+<td>"Documentation"</td>
+<td>Title of the docs home page.</td>
+</tr>
+<tr>
+<td><strong>docs.index</strong></td>
+<td><em>string</em></td>
+<td>"index.md"</td>
+<td>Path to the home page relative to the <em>docs.dir</em>.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="theme-options" class="anchor" href="#theme-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Theme Options</h3>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>depth</strong></td>
+<td><em>integer</em></td>
+<td>2</td>
+<td>How deep in the KSS hierarchy to generate unique style guide pages.</td>
+</tr>
+<tr>
+<td><strong>assets</strong></td>
+<td><em>string</em></td>
+<td>"assets"</td>
+<td>Relative path to the theme's assets.</td>
+</tr>
+<tr>
+<td><strong>partials</strong></td>
+<td><em>string</em></td>
+<td>"partials"</td>
+<td>Relative path to the theme's handlebars partials.</td>
+</tr>
+<tr>
+<td><strong>helpers</strong></td>
+<td><em>string</em></td>
+<td>"helpers.js"</td>
+<td>Relative path to the theme's handlebars helpers file.</td>
+</tr>
+<tr>
+<td><strong>custom</strong></td>
+<td><em>array</em></td>
+<td>['Template', 'Transparent']</td>
+<td>Custom comment properties used in the theme.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="default-theme" class="anchor" href="#default-theme" aria-hidden="true"><span class="octicon octicon-link"></span></a>Default Theme</h2>
+
+<h3>
+<a id="custom-properties" class="anchor" href="#custom-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Properties</h3>
+
+<p>The default kraftverk theme supports additional comment properties besides the ones in KSS.</p>
+
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Template</strong></td>
+<td>docs/example/colors</td>
+<td><em>dynamic</em></td>
+<td>Template used for documenting you KSS comment. Kraftverk theme try to guess your prefered template between <em>docs</em> and <em>example</em> depending of you having a <code>Markup:</code> in your KSS comment or not.</td>
+</tr>
+<tr>
+<td><strong>Transparent</strong></td>
+<td>true/false</td>
+<td>true</td>
+<td>Force the iframe (used for displaying examples) background to transparent. Useful for when you want to showcase single components vs. complete page templates. Defaults to true since it's more common to display smaller components by themself.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h4>
+
+<p><em>All examples are using LESS.</em></p>
+
+<h5>
+<a id="template" class="anchor" href="#template" aria-hidden="true"><span class="octicon octicon-link"></span></a>Template</h5>
+
+<p>Display your color variables in the style guide:</p>
+
+<div class="highlight highlight-source-css-less"><pre><span class="pl-c">// Colors</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// @red  - #ff6666</span>
+<span class="pl-c">// @blue - #6666ff</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// Template: colors</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// Styleguide: variables.colors</span>
+
+<span class="pl-smi">@red</span>  : <span class="pl-c1">#ff6666</span>
+<span class="pl-smi">@blue</span> : <span class="pl-c1">#6666ff</span></pre></div>
+
+<h5>
+<a id="transparent" class="anchor" href="#transparent" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transparent</h5>
+
+<p>Use your site background in the style guide example (useful for showcasing pages):</p>
+
+<div class="highlight highlight-source-css-less"><pre><span class="pl-c">// Home</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// Markup: pages/home.hbs</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// Transparent: false</span>
+<span class="pl-c">//</span>
+<span class="pl-c">// Styleguide: pages.home</span>
+
+<span class="pl-e">.home</span> {
+    <span class="pl-c">// styles</span>
+}</pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/antoniozzo/kraftverk">Kraftverk</a> is maintained by <a href="https://github.com/antoniozzo">antoniozzo</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
