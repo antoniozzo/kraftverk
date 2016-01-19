@@ -46,6 +46,10 @@
 		{{else}}
 			{{> partial.section_intro}}
 
+			{{#ifTemplate "example"}}
+				{{> partial.section}}
+			{{/ifTemplate}}
+
 			{{#each children}}
 				{{> partial.section}}
 
@@ -54,8 +58,6 @@
 						{{> partial.section modifier="sub"}}
 					{{/each}}
 				{{/if}}
-			{{else}}
-				{{> partial.section}}
 			{{/each}}
 		{{/ifDepth}}
 	{{/if}}
