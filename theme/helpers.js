@@ -72,6 +72,9 @@ module.exports = function(kraftverk) {
 			return '/' + kraftverk.getPath(reference + '/' + modifier);
 		},
 
+		include : function(file) {
+			return kraftverk.fs.readFileSync(process.cwd() + file, 'utf8');
+		}
 	};
 
 };

@@ -13,9 +13,15 @@
 	{{/each}}
 </head>
 <body>
+	{{#if (option "sprite")}}
+		<div style="display: none">
+			{{{include (option "sprite")}}}
+		</div>
+	{{/if}}
+
 	<script type="text/javascript">
 		if (window.location.hash === '#iframe') {
-			var css   = 'html, body { height: auto; padding: 0; margin: 0; {{background}} }';
+			var css   = 'html, body { padding: 0; margin: 0; {{height}} {{background}} }';
 			var head  = document.head || document.getElementsByTagName('head')[0];
 			var style = document.createElement('style');
 

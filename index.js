@@ -42,6 +42,8 @@ Kraftverk.prototype = {
 		theme     : __dirname + '/theme',
 		styles    : [],
 		scripts   : [],
+		logo      : '/assets/logo.svg',
+		sprite    : '',
 		templates : 'src/templates',
 
 		docs : {
@@ -274,6 +276,7 @@ Kraftverk.prototype = {
 				data    = this.partials[section.reference()].data;
 
 				examples[name] = {
+					height     : section.data.iframeheight === 'false' ? 'height: auto;' : 'height: ' + section.data.iframeheight + ';',
 					background : section.data.transparent === 'false' ? '' : 'background: none;',
 					content    : this.compile(partial, data)
 				};
@@ -286,6 +289,7 @@ Kraftverk.prototype = {
 					partial  = '{{> ' + section.reference() + ' modifier_class="' + modifier.className() + '"}}';
 
 					examples[name] = {
+						height     : section.data.iframeheight === 'false' ? 'height: auto;' : 'height: ' + section.data.iframeheight + ';',
 						background : section.data.transparent === 'false' ? '' : 'background: none;',
 						content    : this.compile(partial, data)
 					};

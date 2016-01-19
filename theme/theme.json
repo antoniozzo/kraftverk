@@ -3,5 +3,5 @@
 	"assets"   : "assets",
 	"partials" : "partials",
 	"helpers"  : "helpers.js",
-	"custom"   : ["Template", "Transparent"]
+	"custom"   : ["Template", "Transparent", "IframeHeight"]
 }
