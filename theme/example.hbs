@@ -34,6 +34,10 @@
 			}
 
 			head.appendChild(style);
+
+			// Iframe font-size quick fix
+			document.body.style.fontSize = "10px";
+			setTimeout(function() { document.body.removeAttribute('style'); }, 100);
 		}
 	</script>
 
