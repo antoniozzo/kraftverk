@@ -1,0 +1,21 @@
+<section class="section{{#if children}} section--hero{{/if}}">
+	<div class="section-aside">
+		<h4 class="section-title">
+			<span class="section-number">1</span>
+			{{option "title" "docs"}}
+		</h4>
+
+		{{#each children}}
+			<h3 class="section-title section-title--sub">
+				<a href="/{{@key}}">
+					<span>1.{{@index}}</span>
+					{{this}}
+				</a>
+			</h3>
+		{{/each}}
+	</div>
+
+	<div class="section-content">
+		{{{doc}}}
+	</div>
+</section>

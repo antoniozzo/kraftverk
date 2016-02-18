@@ -1,7 +1,0 @@
-{
-	"depth"    : 2,
-	"assets"   : "assets",
-	"partials" : "partials",
-	"helpers"  : "helpers.js",
-	"custom"   : ["Template", "Transparent", "IframeHeight"]
-}

@@ -1,0 +1,110 @@
+/*
+Components
+
+Components is the meat of your assets.
+They are self-contained organisms and can differ
+in appearance with modifiers and states.
+
+Styleguide: components
+ */
+/*
+.button
+
+Various buttons & sizes
+
+.button--s - Small button
+.button--m - Medium button
+.button--l - Large button
+
+Markup: components/button/button.hbs
+
+Styleguide: components.button
+*/
+.button {
+  display: block;
+  padding: 10px 16px;
+  min-width: 72px;
+  border: 2px solid #444;
+  border-radius: 5px;
+  background-color: #444;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  -webkit-font-smoothing: auto;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  /*
+	.button--[color]
+
+	Button color modifiers
+
+	.button--red - Red button
+	.button--blue - Blue button
+
+	Markup: components/button/button.hbs
+
+	Styleguide: components.button.colors
+	*/
+}
+.button:focus {
+  border: 2px solid #333;
+}
+.button:hover {
+  border: 2px solid #333;
+  background-color: #333;
+}
+.button:active {
+  border: 2px solid #222;
+  background-color: #222;
+}
+.button.button--l {
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-size: 22px;
+}
+.button.button--s {
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.button.button--xs {
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.button.button--red {
+  border-color: #d20032;
+  background-color: #d20032;
+}
+.button.button--red:focus {
+  border-color: #c80028;
+}
+.button.button--red:hover {
+  border-color: #c80028;
+  background-color: #c80028;
+}
+.button.button--red:active {
+  border-color: #be001e;
+  background-color: #be001e;
+}
+.button.button--blue {
+  border-color: #3200d2;
+  background-color: #3200d2;
+}
+.button.button--blue:focus {
+  border-color: #2800c8;
+}
+.button.button--blue:hover {
+  border-color: #2800c8;
+  background-color: #2800c8;
+}
+.button.button--blue:active {
+  border-color: #1e00be;
+  background-color: #1e00be;
+}

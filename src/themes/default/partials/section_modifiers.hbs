@@ -1,0 +1,41 @@
+{{#if modifiers.modifier}}
+	{{#each modifiers.modifier}}
+		<div class="section section--sub">
+			<div class="section-aside">
+				<h4 class="section-title section-title--sub">
+					<span>.{{value}}</span>
+					{{{description}}}
+				</h4>
+
+				<div class="section-description">
+					{{> partial.icons url=(url reference)}}
+				</div>
+			</div>
+
+			<div class="section-content">
+				<iframe src="{{url reference}}#iframe" scrolling="no"></iframe>
+			</div>
+		</div>
+	{{/each}}
+{{else}}
+	{{#each modifiers}}
+		{{#each this}}
+			<div class="section section--sub">
+				<div class="section-aside">
+					<h4 class="section-title section-title--sub">
+						<span>{{@../key}}</span>
+						{{{value}}}
+					</h4>
+
+					<div class="section-description">
+						{{> partial.icons url=(url reference)}}
+					</div>
+				</div>
+
+				<div class="section-content">
+					<iframe src="{{url reference}}#iframe" scrolling="no"></iframe>
+				</div>
+			</div>
+		{{/each}}
+	{{/each}}
+{{/if}}

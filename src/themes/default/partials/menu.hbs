@@ -1,0 +1,7 @@
+<nav class="menu">
+	<a href="/">Docs</a>
+
+	{{#each (pages 1)}}
+		<a href="{{url reference}}">{{title}}</a>
+	{{/each}}
+</nav>

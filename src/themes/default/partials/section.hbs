@@ -1,0 +1,64 @@
+<section id="{{reference}}" data-section="{{title}}" class="section{{#if modifier}} section--{{modifier}}{{/if}}">
+	<div class="section-aside">
+		<h3 class="section-title{{#if modifier}} section-title--{{modifier}}{{/if}}">
+			{{#unless first}}
+				<span>{{numeric}}</span>
+				{{title}}
+			{{/unless}}
+		</h3>
+
+		<div class="section-description">
+			{{#ifTemplate "demo"}}
+				{{#if hasDemo}}
+					{{> partial.icons url=(demoUrl reference 'index')}}
+				{{/if}}
+
+				{{#unless first}}
+					{{#if description}}
+						{{{description}}}
+					{{/if}}
+				{{/unless}}
+
+				{{#if parameters}}
+					{{> partial.parameters}}
+				{{/if}}
+
+				{{#if props}}
+					{{> partial.props}}
+				{{/if}}
+			{{/ifTemplate}}
+		</div>
+	</div>
+
+	<div class="section-content">
+		{{#ifTemplate "demo"}}
+			{{#if hasDemo}}
+				<iframe src="{{url reference 'index'}}#iframe" scrolling="no"></iframe>
+			{{/if}}
+		{{/ifTemplate}}
+
+		{{#ifTemplate "docs"}}
+			{{#if parameters}}
+				{{> partial.parameters}}
+			{{/if}}
+
+			{{#if description}}
+				{{{description}}}
+			{{/if}}
+		{{/ifTemplate}}
+
+		{{#ifTemplate "colors"}}
+			{{#if parameters}}
+				{{> partial.colors}}
+			{{/if}}
+		{{/ifTemplate}}
+	</div>
+</section>
+
+{{#ifTemplate "demo"}}
+	{{> partial.section_modifiers}}
+
+	{{#if markup}}
+		{{> partial.section_markup}}
+	{{/if}}
+{{/ifTemplate}}

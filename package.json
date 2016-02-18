@@ -6,7 +6,13 @@
     "name": "Antonio Rizzo",
     "email": "antonio.rizzo@oakwood.se"
   },
-  "main": "index.js",
+  "bin": {
+    "kraftverk": "bin/kraftverk"
+  },
+  "scripts": {
+    "start": "./bin/kraftverk server --config example/kraftverk.config.js",
+    "build": "./bin/kraftverk build --config example/kraftverk.config.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/antoniozzo/kraftverk.git"
@@ -18,10 +24,36 @@
     "generator"
   ],
   "dependencies": {
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.2",
+    "chokidar": "^1.4.2",
+    "css-loader": "^0.23.1",
+    "debounce": "^1.0.0",
+    "express": "^4.13.4",
+    "extend": "^3.0.0",
+    "findup": "^0.1.5",
     "fs-readdir-recursive": "^1.0.0",
     "handlebars": "^4.0.5",
     "js-beautify": "^1.5.10",
     "kss": "^2.1.1",
-    "marked": "^0.3.5"
+    "marked": "^0.3.5",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0",
+    "proxy-middleware": "^0.15.0",
+    "react": "^0.14.7",
+    "react-docgen": "^2.7.0",
+    "react-dom": "^0.14.7",
+    "style-loader": "^0.13.0",
+    "url": "^0.11.0",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.7.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.8",
+    "eslint": "^2.0.0",
+    "eslint-config-airbnb": "^5.0.1",
+    "eslint-plugin-react": "^3.16.1"
   }
 }

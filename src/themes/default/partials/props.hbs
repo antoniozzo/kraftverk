@@ -1,0 +1,9 @@
+<dl class="section-props">
+	{{#each props}}
+		<dt>
+			{{#if required}}*{{/if}}
+			{{@key}}:
+		</dt>
+		<dd>{{{description}}}</dd>
+	{{/each}}
+</dl>

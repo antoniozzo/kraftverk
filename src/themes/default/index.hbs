@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+
+	<title>{{option "title"}} - {{title}}</title>
+
+	<meta name="description" content="Page Title">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="/assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+		<div class="header-content">
+			<a href="/" class="brand">
+				<img src="{{option "logo" "theme"}}">
+			</a>
+
+			{{#ifDepth 2}}
+				<nav class="breadcrumbs">
+					<a href="{{url topReference}}">{{topReference}}</a>
+					<a href="{{url reference}}">{{title}}</a>
+					<span class="js-breadcrumb"></span>
+				</nav>
+			{{/ifDepth}}
+
+			{{#if doc}}
+				{{#unless children}}
+					<nav class="breadcrumbs">
+						<a href="/">{{option "docsTitle"}}</a>
+						<span>{{name}}</span>
+					</nav>
+				{{/unless}}
+			{{/if}}
+
+			{{> partial.menu}}
+		</div>
+	</header>
+
+	{{#if doc}}
+		{{> partial.doc}}
+	{{else}}
+		{{#ifDepth 1}}
+			{{> partial.section_hero}}
+		{{else}}
+			{{> partial.section_intro}}
+
+			{{#ifTemplate "demo"}}
+				{{> partial.section first="true"}}
+			{{/ifTemplate}}
+
+			{{#each (pages 3 reference)}}
+				{{> partial.section}}
+
+				{{#each (pages 4 reference)}}
+					{{> partial.section modifier="sub"}}
+				{{/each}}
+			{{/each}}
+		{{/ifDepth}}
+	{{/if}}
+
+	<script type="text/javascript" src="/assets/js/prettify.js"></script>
+	<script type="text/javascript" src="/assets/js/iframeResizer.min.js"></script>
+	<script type="text/javascript" src="/assets/js/bootstrapNative.min.js"></script>
+	<script type="text/javascript" src="/assets/js/main.js"></script>
+</body>
+</html>

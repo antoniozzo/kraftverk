@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+var kraftverk = require('../src/index');
+var options   = require('../src/config')();
+var version   = require('../package.json').version;
+var read      = require('fs-readdir-recursive');
+var chokidar  = require('chokidar');
+var minimist  = require('minimist');
+var debounce  = require('debounce');
+var chalk     = require('chalk');
+var path      = require('path');
+
+var argv = minimist(process.argv.slice(2));
+
+switch (argv._[0]) {
+	case 'build':
+		commandBuild();
+		break;
+
+	case 'server':
+		commandServer();
+		break;
+
+	default:
+		commandHelp();
+}
+
+function commandBuild() {
+	return kraftverk(options).build()
+		.then(function() {
+			console.log(chalk.green('Kraftverk generated new styleguide!'));
+		})
+		.catch(function(err) {
+			console.log(err);
+		});
+}
+
+function commandServer() {
+	var watch  = path.join(options.src, options[options.generator].watch);
+	var server = require('../src/server');
+
+	server(options, function(err) {
+	    if (err) {
+	        console.error(err)
+	    } else {
+	        console.info('==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.', options.port, options.port)
+	    }
+	});
+
+	chokidar
+		.watch(watch, {persistent : true})
+		.on('change', function(file) { console.log(`File ${file} changed, rebuilding styleguide..`) })
+		.on('change', debounce(commandBuild, 200));
+}
+
+function commandHelp() {
+	console.log([
+		chalk.underline('Usage'),
+		'',
+		'    ' + chalk.bold('kraftverk') + ' ' + chalk.cyan('<command>') + ' ' + chalk.yellow('[<options>]'),
+		'',
+		chalk.underline('Commands'),
+		'',
+		'    ' + chalk.cyan('build') + '           Build style guide',
+		'    ' + chalk.cyan('server') + '          Run development server',
+		'    ' + chalk.cyan('help') + '            Display help information',
+	].join('\n'));
+}

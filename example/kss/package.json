@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "scripts": {
+    "kraftverk-build": "node_modules/kraftverk/bin/kraftverk build",
+    "kraftverk-server": "node_modules/kraftverk/bin/kraftverk server"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-less": "^3.0.5",
+    "kraftverk": "^0.2.0",
+    "less-loader": "^2.2.2"
+  }
+}
