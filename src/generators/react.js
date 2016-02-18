@@ -32,12 +32,15 @@ ReactGenerator.prototype = {
 			props        : component.react.props
 		};
 
+		var value;
 		for (var prop in component.react.props) {
 			if (component.react.props[prop].type.name === 'enum') {
 				data.modifiers[prop] = component.react.props[prop].type.value.map(function(modifier) {
+					value = modifier.value.replace(/'/g, '');
+
 					return {
-						value     : modifier.value.replace(/'/g, ''),
-						reference : [data.reference, prop, modifier.value].join('.')
+						value     : value,
+						reference : [data.reference, prop, value].join('.')
 					};
 				});
 			}
