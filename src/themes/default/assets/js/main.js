@@ -49,7 +49,10 @@ var scrollSpy = function(selector, dataSelector, offset) {
 
 (function() {
 
-	iFrameResize();
+	iFrameResize({
+		heightCalculationMethod : 'taggedElement',
+		bodyMargin : '20px'
+	});
 	prettyPrint();
 	toggleWidth('.section', 'data-toggle-width', 'iframe');
 	scrollSpy('.js-breadcrumb', 'data-section', 200);
