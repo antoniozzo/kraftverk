@@ -18,7 +18,7 @@ var Kraftverk = function(options) {
     this.putFile('main.js', '');
 
     this.options.styles.forEach(function(style) {
-        this.putFile('main.js', `require('${path.join(process.cwd(), style)}');`, true);
+        this.putFile('main.js', `require('${style}');`, true);
     }.bind(this));
 };
 
