@@ -94,8 +94,8 @@ Kraftverk.prototype = {
 
             if (section.hasDemo) {
                 this.gen.generateDemos(section, {
-                    height     : section.custom.iframeheight === undefined ? 'height: auto;' : 'height: ' + section.custom.iframeheight + ';',
-                    background : section.custom.transparent === 'false' ? '' : 'background: none;'
+                    // height     : section.custom.iframeheight === undefined ? 'height: auto;' : 'height: ' + section.custom.iframeheight + ';',
+                    // background : section.custom.transparent === 'false' ? '' : 'background: none;'
                 }, this.demo);
             }
         }

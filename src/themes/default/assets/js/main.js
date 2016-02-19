@@ -48,13 +48,21 @@ var scrollSpy = function(selector, dataSelector, offset) {
 };
 
 (function() {
+	var demos = document.querySelectorAll('iframe');
+	[].forEach.call(demos, function(demo) {
+		var minHeight  = demo.getAttribute('data-height') || 0;
+		var padding    = demo.getAttribute('data-padding') || 0;
+		var background = demo.getAttribute('data-transparent') === 'false' ? false : 'transparent';
 
-	iFrameResize({
-		heightCalculationMethod : 'taggedElement',
-		bodyMargin : '20px'
+		iFrameResize({
+			heightCalculationMethod : 'taggedElement',
+			bodyMargin              : padding,
+			bodyBackground          : background,
+			minHeight               : minHeight
+		}, demo);
 	});
+
 	prettyPrint();
 	toggleWidth('.section', 'data-toggle-width', 'iframe');
 	scrollSpy('.js-breadcrumb', 'data-section', 200);
-
 })();

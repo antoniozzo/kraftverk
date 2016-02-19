@@ -23,7 +23,7 @@ var DEFAULT_CONFIG  = {
 
 	kss : {
 		depth  : 2,
-		custom : ['Template', 'Transparent', 'IframeHeight'],
+		custom : ['Template', 'Transparent', 'IframeHeight', 'IframePadding'],
 		watch  : '**/*.{hbs,css,less,scss}'
 	},
 

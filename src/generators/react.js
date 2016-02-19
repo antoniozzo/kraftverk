@@ -58,6 +58,7 @@ ReactGenerator.prototype = {
 	},
 
 	getStyleguide : function(source) {
+		var options    = this.options.kss;
 		var dir        = path.join(process.cwd(), this.options.src);
 		var files      = read(dir);
 		var styleguide = [];
@@ -67,7 +68,7 @@ ReactGenerator.prototype = {
 			var content = fs.readFileSync(file, 'utf8');
 
 			var section;
-			kss.parse(content, {}, function(err, styleguide) {
+			kss.parse(content, options, function(err, styleguide) {
 				section = styleguide.section()[0];
 			});
 

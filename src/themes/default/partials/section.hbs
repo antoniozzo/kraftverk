@@ -33,7 +33,12 @@
 	<div class="section-content">
 		{{#ifTemplate "demo"}}
 			{{#if hasDemo}}
-				<iframe src="{{url reference 'index'}}#iframe" scrolling="no"></iframe>
+				{{> partial.iframe
+					src=(url reference 'index')
+					transparent=custom.transparent
+					height=custom.iframeheight
+					padding=custom.iframepadding
+				}}
 			{{/if}}
 		{{/ifTemplate}}
 
