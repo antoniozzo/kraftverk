@@ -16,10 +16,6 @@ var Kraftverk = function(options) {
     this.theme.prepare();
 
     this.putFile('main.js', '');
-
-    this.options.styles.forEach(function(style) {
-        this.putFile('main.js', `require('${style}');`, true);
-    }.bind(this));
 };
 
 Kraftverk.prototype = {
@@ -93,10 +89,7 @@ Kraftverk.prototype = {
             section = styleguide[i];
 
             if (section.hasDemo) {
-                this.gen.generateDemos(section, {
-                    // height     : section.custom.iframeheight === undefined ? 'height: auto;' : 'height: ' + section.custom.iframeheight + ';',
-                    // background : section.custom.transparent === 'false' ? '' : 'background: none;'
-                }, this.demo);
+                this.gen.generateDemos(section, {}, this.demo);
             }
         }
     },

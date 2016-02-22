@@ -7,6 +7,10 @@
 
 	<meta name="description" content="Example">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{{#each (option "styles")}}
+		<link rel="stylesheet" type="text/css" href="{{this}}">
+	{{/each}}
 </head>
 <body>
 	{{#if (option "sprite")}}
@@ -14,28 +18,6 @@
 			{{{include (option "sprite")}}}
 		</div>
 	{{/if}}
-
-	<script type="text/javascript">
-		// if (window.location.hash === '#iframe') {
-		// 	var css   = 'html, body { padding: 0; margin: 0; {{height}} {{background}} }';
-		// 	var head  = document.head || document.getElementsByTagName('head')[0];
-		// 	var style = document.createElement('style');
-
-		// 	style.type = 'text/css';
-
-		// 	if (style.styleSheet) {
-		// 		style.styleSheet.cssText = css;
-		// 	} else {
-		// 		style.appendChild(document.createTextNode(css));
-		// 	}
-
-		// 	head.appendChild(style);
-
-		// 	// Iframe font-size quick fix
-		// 	document.body.style.fontSize = "10px";
-		// 	setTimeout(function() { document.body.removeAttribute('style'); }, 100);
-		// }
-	</script>
 
 	<div data-iframe-height="true">
 		{{{content}}}

@@ -2,7 +2,6 @@
 
 var kraftverk = require('../src/index');
 var options   = require('../src/config')();
-var version   = require('../package.json').version;
 var read      = require('fs-readdir-recursive');
 var chokidar  = require('chokidar');
 var minimist  = require('minimist');
