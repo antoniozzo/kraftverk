@@ -32,11 +32,11 @@ module.exports = function(port, options) {
             loaders : [
                 {
                     test    : /\.js$/,
-                    loaders : ['babel']
+                    loader : 'babel'
                 }
             ]
         }
     };
 
-    return merge.smart(options.webpack, config);
+    return merge.smart(config, options.webpack);
 };
